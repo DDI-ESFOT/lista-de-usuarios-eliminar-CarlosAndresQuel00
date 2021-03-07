@@ -29,6 +29,11 @@ const UserList = ({ users }) => {
     document.querySelector("#name").value = "";
     document.querySelector("#lastname").value = "";
   };
+  
+  const handleRemoveUser = () => {
+	const list = document.querySelector("UL");
+    list.removeChild(list.lastElementChild);
+  };
 
   return (
     <>
@@ -36,7 +41,7 @@ const UserList = ({ users }) => {
       <input type="text" id="name" placeholder="Ingrese un nombre" />
       <input type="text" id="lastname" placeholder="Ingrese un apellido" />
       <button onClick={handleAddUser}>Añadir</button>
-      <button>Eliminar el último usuario</button>
+      <button onClick={handleRemoveUser}>Eliminar el último usuario</button>
       <ul>
         {usersList.map((user, index) => {
           return <li key={Math.random()}>{formatName(user)}</li>;
